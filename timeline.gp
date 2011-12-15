@@ -33,17 +33,17 @@ set y2tics out rotate by 90 nomirror
 set xrange [ 0 : * ] reverse 
 set yrange [ 0 : * ] noreverse nowriteback
 
-set y2label "Time [s]" offset -1.5
+# set y2label "Time [s]" offset -1.5
 # set label 1 "Jobs" at graph 0.5, -0.1 centre rotate by 180
 
 set terminal png transparent crop enhanced font "/home/javier/.fonts/Ronnia-regular.ttf" 25 size 1680,1280
 set output 'timeline.png'
 
-# plot "timeline.dat" using ($1 + $2 + $3 + $4 + $5) with boxes linestyle 44 title "UPLOAD", \
-#      "" u ($1 + $2 + $3 + $4) w boxes ls 33 t "RUNNING", \
-#      "" u ($1 + $2 + $3) w boxes ls 22 t "DOWNLOAD",\
-#      "" u ($1 + $2) w boxes ls 11 t "QUEUED", \
-#      "" u 1 w boxes lt -2 notitle 
+plot "timeline.dat" using ($1 + $2 + $3 + $4 + $5) with boxes linestyle 44 title "UPLOAD", \
+     "" u ($1 + $2 + $3 + $4) w boxes ls 33 t "RUNNING", \
+     "" u ($1 + $2 + $3) w boxes ls 22 t "DOWNLOAD",\
+     "" u ($1 + $2) w boxes ls 11 t "QUEUED", \
+     "" u 1 w boxes lt -2 notitle 
 
 
 # plot "timeline.dat" using ($1 + $2 + $3 + $4 + $5) with boxes linetype 3 title "UPLOAD", \
@@ -53,15 +53,15 @@ set output 'timeline.png'
 #      "" u 1 w boxes lt -2 notitle 
 
 
-plot "timeline.dat" using ($2 + $3 + $4 + $5) with boxes linestyle 44 title "UPLOAD", \
-     "" u ($2 + $3 + $4) w boxes ls 33 t "RUNNING", \
-     "" u ($2 + $3) w boxes ls 22 t "DOWNLOAD",\
-     "" u 2 w boxes ls 11 t "QUEUED", \
-     "" u 1 w boxes lt -2 notitle 
+# plot "timeline.dat" using ($2 + $3 + $4 + $5) with boxes linestyle 44 title "UPLOAD", \
+#      "" u ($2 + $3 + $4) w boxes ls 33 t "RUNNING", \
+#      "" u ($2 + $3) w boxes ls 22 t "DOWNLOAD",\
+#      "" u 2 w boxes ls 11 t "QUEUED", \
+#      "" u 1 w boxes lt -2 notitle 
 
 set terminal postscript portrait enhanced color fontfile "/home/javier/.fonts/Ronnia-regular.ttf" font "Ronnia-Regular,20"
-set output 'timeline.ps'
-#set output '| ps2pdf - timeline.pdf'
+#set output 'timeline.ps'
+set output '| ps2pdf - timeline.pdf'
 
 #set terminal pdfcairo font "Gill Sans,9" linewidth 4 rounded
 #set output 'timeline.pdf'

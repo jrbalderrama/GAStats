@@ -11,11 +11,12 @@ images = long(query[0])
 
 condition = 'where EXIT_CODE=0'
 
-query = select('max(CREATION + QUEUED + DOWNLOAD + RUNNING + UPLOAD)', condition)
+query = select('max(END_E)', condition)
 timespan = query[0] / 60**2
 
-query = select('RUNNING', condition)
+query = select('UPLOAD-RUNNING', condition)
 jobs = len(query)
+#print map(lambda x: x / 60**2, query)
 cputime = sum(query) / 60**2
 
 query = select('count(RUNNING)')
